@@ -26,10 +26,10 @@ export default class CameraScreen extends React.Component {
       if (this.state.timeSteep == false) {
         this.setState({timeSteep : true});
         RNFetchBlob
-        .fetch('POST', 'http://192.168.1.147:5000/identifyFace', {'Content-Type' : 'multipart/form-data'}, 
+        .fetch('POST', 'http://faceapi2020.azurewebsites.net/identifyFace', {'Content-Type' : 'multipart/form-data'}, 
         [
           { name : 'fileImage', filename : 'image.jpg', type:'image/jpg', data: RNFetchBlob.wrap(data.uri)},
-          { name : 'personGroupId', data : 'gdit'},
+          { name : 'personGroupId', data : 'camera-rn-group-1'},
         ])
         .then(response => response.json())
         .then(json => {
